@@ -1,12 +1,12 @@
 
 
 
-"      (\.   \      ,/)      
-"       \(   |\     )/       
-"       //\  | \   /\\       
-"      (/ /\_#oo#_/\ \)      Saint Hubert's holy, wholly annotated vimrc 
-"       \/\  ####  /\/       
-"            `##'            
+"     (\.   \      ,/)      
+"      \(   |\     )/       
+"      //\  | \   /\\       
+"     (/ /\_#oo#_/\ \)      Saint Hubert's holy, wholly annotated vimrc 
+"      \/\  ####  /\/       
+"           `##'            
 
 
 
@@ -74,8 +74,8 @@
 " `````````````````````````````````````````````````````````````````````````````
   noremap <S-j> <C-D>
   noremap <S-k> <C-U>
-  noremap <C-j> 6j
-  noremap <C-k> 6k
+  noremap <S-h> 5j
+  noremap <S-l> 5k
 
 " NERDTree 
 " `````````````````````````````````````````````````````````````````````````````
