@@ -93,7 +93,10 @@
 
 " Vimscripts and custom functions 
 " `````````````````````````````````````````````````````````````````````````````
-  noremap <Leader>8 :call <SID>ToggleColorColumn()<cr>
+  noremap <Leader>8 <Esc>:call <SID>ToggleColorColumn()<CR>
+  noremap <Leader><F1> <Esc>:call CleanClose(1)<CR>
+
+
 
 " =============================================================================
 
@@ -137,6 +140,27 @@
                 windo let &colorcolumn=s:color_column_old
                 let s:color_column_old = 0
         endif
+  endfunction
+
+" CleanClose() -- close a buffer and update buftabs without disturbing windows
+" `````````````````````````````````````````````````````````````````````````````
+  function! CleanClose(tosave)
+    if (a:tosave == 1)
+        w!
+    endif
+    let todelbufNr = bufnr("%")
+    let newbufNr = bufnr("#")
+    if ((newbufNr != -1) && (newbufNr != todelbufNr) && buflisted(newbufNr))
+        exe "b".newbufNr
+    else
+        bnext
+    endif
+
+    if (bufnr("%") == todelbufNr)
+        new
+    endif
+    exe "bd".todelbufNr
+    call Buftabs_show(todelbufNr)
   endfunction
 " =============================================================================
 
