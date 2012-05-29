@@ -94,7 +94,9 @@
 " Vimscripts and custom functions 
 " `````````````````````````````````````````````````````````````````````````````
   noremap <Leader>8 <Esc>:call <SID>ToggleColorColumn()<CR>
+  noremap <Leader>7 <Esc>:call <SID>ToggleFormatColumn()<CR>
   noremap <Leader><F1> <Esc>:call CleanClose(1)<CR>
+  noremap <Leader>p <Esc>:set softtabstop=4 shiftwidth=4 expandtab<CR>
 
 
 
