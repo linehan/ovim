@@ -14,11 +14,9 @@ if [ "$(ls -A ./repo 2>/dev/null)" ]; then
         for i in `find ./repo -maxdepth 1 -mindepth 1 -type d`; do
                 cd $i
                 if [ "$(ls -A 2>/dev/null)" ]; then
-                        git pull 
-                        cd - 
+                        git pull && cd -
                 else
-                        echo ":-/"
-                        cd -
+                        cd - && echo ":-/"
                 fi
         done
 else
