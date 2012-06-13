@@ -16,10 +16,10 @@ if [ "$(ls -A ./repo 2>/dev/null)" ]; then
                 if [ "$(ls -A 2>/dev/null)" ]; then
                         git pull && cd -
                 else
-                        cd - && echo ":-/"
+                        cd - && echo "Delete any empty directories in ./repo"
                 fi
         done
 else
-        cd ./repo && cloneum;
+        cd ./repo && cloneum
 fi
 
