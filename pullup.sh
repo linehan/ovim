@@ -13,7 +13,7 @@ cloneum()
 if [ "$(ls -A ./repo 2>/dev/null)" ]; then
         for i in `find ./repo -maxdepth 1 -mindepth 1 -type d`; do
                 cd $i
-                [ "$(ls -A 2>/dev/null)" ] && git pull && cd - || cd - || echo ":-/"
+                [ "$(ls -A 2>/dev/null)" ] && git pull && cd - || echo ":-/"
         done
 else
         cd ./repo && cloneum;
