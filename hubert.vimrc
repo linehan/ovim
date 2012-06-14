@@ -29,6 +29,7 @@
   set t_Co=256              " Enable 256 color support
   colorscheme zenburn       " Set the default colorscheme
   syntax on                 " Enable syntax highlighting
+  set background=dark       " Tell vim the background is dark (brightens colorscheme)
 
 " Saving 
 " `````````````````````````````````````````````````````````````````````````````
@@ -37,9 +38,9 @@
 
 " Tabs 
 " `````````````````````````````````````````````````````````````````````````````
-  set tabstop=8             " Set width of hard tab
-  set softtabstop=8         " Set number of spaces in soft tab
-  set shiftwidth=8          " Set number of spaces to auto-indent
+  set tabstop=4             " Set width of hard tab
+  set softtabstop=4         " Set number of spaces in soft tab
+  set shiftwidth=4          " Set number of spaces to auto-indent
   set expandtab             " Always insert soft tabs (spaces) 
 
 " Automatic formatting 
@@ -129,19 +130,19 @@
 " =============================================================================
 " ToggleColorColumn() 
 " `````````````````````````````````````````````````````````````````````````````
-  hi ColorColumn ctermbg=108
-  set colorcolumn=81            " The column to be colored 
-  let s:color_column_old=0      " ToggleColorColumn by default
-
-  function! s:ToggleColorColumn()
-        if s:color_column_old == 0
-                let s:color_column_old = &colorcolumn
-                windo let &colorcolumn = 0
-        else
-                windo let &colorcolumn=s:color_column_old
-                let s:color_column_old = 0
-        endif
-  endfunction
+"  hi ColorColumn ctermbg=108
+"  set colorcolumn=81            " The column to be colored 
+"  let s:color_column_old=0      " ToggleColorColumn by default
+"
+"  function! s:ToggleColorColumn()
+"        if s:color_column_old == 0
+"                let s:color_column_old = &colorcolumn
+"                windo let &colorcolumn = 0
+"        else
+"                windo let &colorcolumn=s:color_column_old
+"                let s:color_column_old = 0
+"        endif
+"  endfunction
 
 " CleanClose() -- close a buffer and update buftabs without disturbing windows
 " `````````````````````````````````````````````````````````````````````````````
