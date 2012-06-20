@@ -1,12 +1,12 @@
 
 
 
-"     (\.   \      ,/)      
-"      \(   |\     )/       
-"      //\  | \   /\\       
-"     (/ /\_#oo#_/\ \)      Saint Hubert's holy, wholly annotated vimrc 
-"      \/\  ####  /\/       
-"           `##'            
+"     (\.   \      ,/)
+"      \(   |\     )/
+"      //\  | \   /\\
+"     (/ /\_#oo#_/\ \)      Saint Hubert's holy, wholly annotated vimrc
+"      \/\  ####  /\/
+"           `##'
 
 
 
