@@ -24,9 +24,9 @@
   set fillchars=fold:\      " Set fold fill characters (default is '-') 
   set laststatus=2          " Show statusline even with one open buffer
   set cursorcolumn          " Show a highlighted cursor column
-  set statusline=%=%-14.(%l
-        \,%c%V%)\ %<%P      " Configure/offset status line so it does not
-                            " interfere with buftabs
+
+  " Right-align and configure a useful status line display
+  set statusline=%=%-14.(%m\ %{&ff}\ %y\ %v%V%)\ %<%P
 
 " Colors 
 " `````````````````````````````````````````````````````````````````````````````
@@ -36,8 +36,7 @@
   set background=dark       " Tell vim the background is dark
                             " (brightens colorscheme)
 
-  " The following lines define an 'over length' regexp and make it's background
-  " black. They weren't playing nice with multi-line, thus the comment block.
+  " Define an 'over length' regexp and make it's background black
   highlight OverLength ctermbg=black
   match OverLength /\%>80v.\+/
 
