@@ -25,7 +25,7 @@ NERDTree
 --------
 
     ,n - Open the NERDTree browser window
-    o  - Open the currently highlited file in a new buffer
+    o  - Open the currently highlighted file in a new buffer
     x  - close the current directory
     u  - Move the root directory up from the current root
     C  - Set root directory to currently highlighted directory
