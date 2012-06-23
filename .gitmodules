@@ -1,0 +1,9 @@
+[submodule "repo/tabular"]
+	path = repo/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "repo/nerdtree"]
+	path = repo/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "repo/nerdcommenter"]
+	path = repo/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
