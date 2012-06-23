@@ -13,6 +13,7 @@ Window Management
       j - focuses window (above/below)
       k - focuses window (above/below)
       l - focuses window on the right
+      q - close active window
 
 Buffer Management
 -----------------
