@@ -29,6 +29,7 @@ NERDTree
     x  - close the current directory
     u  - Move the root directory up from the current root
     C  - Set root directory to currently highlighted directory
+    r  - Refresh current node
     m  - Open a new file menu
     8  - Toggle the ColorColumn
 
