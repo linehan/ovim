@@ -1,0 +1,64 @@
+Overview
+--------
+
+    ovim is a conglomeration of vim configurations and plugins/scripts. This
+    README will mostly consist of usage tips, some of which are specific to
+    the configuration, while others being core vi/m usage.
+
+Window Management
+-----------------
+
+    [ctrl]+w
+      h - focuses window on the left
+      j - focuses window (above/below)
+      k - focuses window (above/below)
+      l - focuses window on the right
+      q - close active window
+
+Buffer Management
+-----------------
+
+    F1  - Switch to the previous buffer
+    F2  - Switch to the next buffer
+    ,F1 - Close (and possibly save, depending on your .vimrc) buffer
+
+NERDTree
+--------
+
+    ,n - Open the NERDTree browser window
+    o  - Open the currently highlighted file in a new buffer
+    x  - close the current directory
+    u  - Move the root directory up from the current root
+    C  - Set root directory to currently highlighted directory
+    r  - Refresh current node
+    m  - Open a new file menu
+    8  - Toggle the ColorColumn
+
+Movement/Editing
+----------------
+
+    [sh]+h - Move down 5 lines
+    [sh]+l - Move up 5 lines
+    [sh]+j - Move down 25 lines
+    [sh]+k - Move up 25 lines
+    [sh]+$ - Go to end of line
+    0      - Go to beginning of line
+    [sh]+^ - Go to non-white-space beginning of line
+    A      - Go to end of line, and enter insert mode
+    o      - Start a new line, and enter insert mode
+    yy     - Copy a single line
+    dd     - Cut a single line
+    p      - Paste at current position
+    P      - Paste at position above current
+
+Miscellaneous
+-------------
+
+    c,c    - Comment out the current line
+    c,[sp] - Uncomment the current line
+
+References
+----------
+
+    http://vim.wikia.com/
+    http://vim.wikia.com/wiki/Copy,_cut_and_paste
