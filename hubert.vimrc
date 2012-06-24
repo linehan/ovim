@@ -1,12 +1,12 @@
 
 
 
-"     (\.   \      ,/)      
-"      \(   |\     )/       
-"      //\  | \   /\\       
-"     (/ /\_#oo#_/\ \)      Saint Hubert's holy, wholly annotated vimrc 
-"      \/\  ####  /\/       
-"           `##'            
+"     (\.   \      ,/)
+"      \(   |\     )/
+"      //\  | \   /\\
+"     (/ /\_#oo#_/\ \)      Saint Hubert's holy, wholly annotated vimrc
+"      \/\  ####  /\/
+"           `##'
 
 
 
@@ -23,23 +23,33 @@
   set ruler                 " Show the current line and column
   set fillchars=fold:\      " Set fold fill characters (default is '-') 
   set laststatus=2          " Show statusline even with one open buffer
+  set cursorcolumn          " Show a highlighted cursor column
+
+  " Right-align and configure a useful status line display
+  set statusline=%=%-14.(%m\ %{&ff}\ %y\ %v%V%)\ %<%P
 
 " Colors 
 " `````````````````````````````````````````````````````````````````````````````
   set t_Co=256              " Enable 256 color support
   colorscheme zenburn       " Set the default colorscheme
   syntax on                 " Enable syntax highlighting
+  set background=dark       " Tell vim the background is dark
+                            " (brightens colorscheme)
+
+  " Define an 'over length' regexp and make it's background black
+  highlight OverLength ctermbg=black
+  match OverLength /\%>80v.\+/
 
 " Saving 
 " `````````````````````````````````````````````````````````````````````````````
-  set autowriteall          " Auto-write a modified file (autosave)
+"  set autowriteall          " Auto-write a modified file (autosave)
   set hidden                " Enable hiding existing buffers
 
 " Tabs 
 " `````````````````````````````````````````````````````````````````````````````
-  set tabstop=8             " Set width of hard tab
-  set softtabstop=8         " Set number of spaces in soft tab
-  set shiftwidth=8          " Set number of spaces to auto-indent
+  set tabstop=4             " Set width of hard tab
+  set softtabstop=4         " Set number of spaces in soft tab
+  set shiftwidth=4          " Set number of spaces to auto-indent
   set expandtab             " Always insert soft tabs (spaces) 
 
 " Automatic formatting 
@@ -129,26 +139,26 @@
 " =============================================================================
 " ToggleColorColumn() 
 " `````````````````````````````````````````````````````````````````````````````
-  hi ColorColumn ctermbg=108
-  set colorcolumn=81            " The column to be colored 
-  let s:color_column_old=0      " ToggleColorColumn by default
-
-  function! s:ToggleColorColumn()
-        if s:color_column_old == 0
-                let s:color_column_old = &colorcolumn
-                windo let &colorcolumn = 0
-        else
-                windo let &colorcolumn=s:color_column_old
-                let s:color_column_old = 0
-        endif
-  endfunction
+"  hi ColorColumn ctermbg=108
+"  set colorcolumn=81            " The column to be colored 
+"  let s:color_column_old=0      " ToggleColorColumn by default
+"
+"  function! s:ToggleColorColumn()
+"        if s:color_column_old == 0
+"                let s:color_column_old = &colorcolumn
+"                windo let &colorcolumn = 0
+"        else
+"                windo let &colorcolumn=s:color_column_old
+"                let s:color_column_old = 0
+"        endif
+"  endfunction
 
 " CleanClose() -- close a buffer and update buftabs without disturbing windows
 " `````````````````````````````````````````````````````````````````````````````
   function! CleanClose(tosave)
-    if (a:tosave == 1)
-        w!
-    endif
+"    if (a:tosave == 1)
+"        w!
+"    endif
     let todelbufNr = bufnr("%")
     let newbufNr = bufnr("#")
     if ((newbufNr != -1) && (newbufNr != todelbufNr) && buflisted(newbufNr))
@@ -160,7 +170,7 @@
     if (bufnr("%") == todelbufNr)
         new
     endif
-    exe "bd".todelbufNr
+    exe "bd!".todelbufNr
     call Buftabs_show(todelbufNr)
   endfunction
 " =============================================================================
