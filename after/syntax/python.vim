@@ -1,1 +1,1 @@
-syn keyword pythonTodo FIXME NOTE NOTES TODO XXX NOTICE CAVEAT contained
+syn keyword pythonTodo FIXME NOTE NOTES LICENSE TODO XXX NOTICE CAVEAT contained

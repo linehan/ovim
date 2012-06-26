@@ -1,1 +1,1 @@
-syn keyword shTodo      contained       COMBAK FIXME TODO XXX NOTE NOTICE CAVEAT
+syn keyword shTodo      contained       COMBAK FIXME TODO XXX NOTE NOTES NOTICE LICENSE CAVEAT

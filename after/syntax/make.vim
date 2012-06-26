@@ -1,1 +1,1 @@
-syn keyword makeTodo TODO FIXME XXX NOTE NOTICE CAVEAT contained
+syn keyword makeTodo TODO FIXME XXX NOTE NOTES LICENSE NOTICE CAVEAT contained

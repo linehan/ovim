@@ -1,1 +1,1 @@
-syn keyword	cTodo		contained TODO FIXME XXX NOTE NOTICE CAVEAT
+syn keyword	cTodo	contained TODO FIXME XXX NOTE NOTES NOTICE CAVEAT LICENSE
