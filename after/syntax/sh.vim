@@ -1,1 +1,1 @@
-syn keyword	cTodo		contained TODO FIXME XXX NOTE CAVEAT
+syn keyword shTodo      contained       COMBAK FIXME TODO XXX NOTE NOTICE CAVEAT

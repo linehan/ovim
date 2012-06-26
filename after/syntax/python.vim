@@ -1,1 +1,1 @@
-syn keyword	cTodo		contained TODO FIXME XXX NOTE CAVEAT
+syn keyword pythonTodo FIXME NOTE NOTES TODO XXX NOTICE CAVEAT contained
