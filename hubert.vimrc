@@ -96,9 +96,13 @@
 " `````````````````````````````````````````````````````````````````````````````
 " Execute python file being edited
   noremap <buffer> <S-e> :w<CR>:!/usr/bin/env python2 % <CR>
+" Turn the color column on and off
   noremap <Leader>8 <Esc>:call <SID>ToggleColorColumn()<CR>
+" Turn the 72-col color column on and off 
   noremap <Leader>7 <Esc>:call <SID>ToggleFormatColumn()<CR>
+" Close a buffer
   noremap <Leader><F1> <Esc>:call CleanClose(1)<CR>
+" Set 4-space tabs
   noremap <Leader>p <Esc>:set softtabstop=4 shiftwidth=4 expandtab<CR>
   noremap <Leader>s :Gstatus<CR>
   noremap <Leader>c :Gcommit<CR>
