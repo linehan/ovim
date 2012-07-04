@@ -52,6 +52,7 @@
                             " t - Auto-wrap text using textwidth
   autocmd FileType make     " When editing a Makefile...
   \setlocal noexpandtab     " always insert hard tabs
+"  filetype plugin indent on " enable filetype plugins and indentation
 
 " Pattern matching 
 " `````````````````````````````````````````````````````````````````````````````
@@ -93,6 +94,8 @@
 
 " Vimscripts and custom functions 
 " `````````````````````````````````````````````````````````````````````````````
+" Execute python file being edited
+  noremap <buffer> <S-e> :w<CR>:!/usr/bin/env python2 % <CR>
   noremap <Leader>8 <Esc>:call <SID>ToggleColorColumn()<CR>
   noremap <Leader>7 <Esc>:call <SID>ToggleFormatColumn()<CR>
   noremap <Leader><F1> <Esc>:call CleanClose(1)<CR>
