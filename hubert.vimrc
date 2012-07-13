@@ -119,6 +119,8 @@
 " NERDTree 
 " `````````````````````````````````````````````````````````````````````````````
   let NERDTreeMinimalUI=1       " Disable the goofy '? for help' message
+  let NERDChristmasTree=1       " Tells the NERD tree to make itself colourful
+  let NERDTreeWinSize=16        " Default is 31
 
 " buftabs 
 " `````````````````````````````````````````````````````````````````````````````
