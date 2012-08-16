@@ -101,10 +101,11 @@
 
 " Execute python file being edited
   noremap <buffer> <S-e> :w<CR>:!/usr/bin/env python2 % <CR>
-" Turn the color column on and off
+
+" Colorcolumn stuff 
   noremap <Leader>8 <Esc>:call <SID>ToggleColorColumn()<CR>
-" Turn the 72-col color column on and off 
   noremap <Leader>7 <Esc>:call <SID>ToggleFormatColumn()<CR>
+
 " Close a buffer
   noremap <Leader><F1> <Esc>:call CleanClose(1)<CR>
 " Set 4-space tabs
@@ -125,7 +126,7 @@
 " `````````````````````````````````````````````````````````````````````````````
   let NERDTreeMinimalUI=1       " Disable the goofy '? for help' message
   let NERDChristmasTree=1       " Tells the NERD tree to make itself colourful
-  let NERDTreeWinSize=20        " Default is 31
+  let NERDTreeWinSize=31        " Default is 31
 
 " buftabs 
 " `````````````````````````````````````````````````````````````````````````````
@@ -144,7 +145,9 @@
 " ToggleColorColumn() 
 " `````````````````````````````````````````````````````````````````````````````
   hi ColorColumn ctermbg=108
-  set colorcolumn=81            " The column to be colored 
+  if exists('+colorcolumn')
+          set colorcolumn=81            " The column to be colored 
+  endif
   let s:color_column_old=0      " ToggleColorColumn by default
 
   function! s:ToggleColorColumn()
