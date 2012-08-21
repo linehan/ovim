@@ -100,10 +100,11 @@
   set showmode
 " Execute python file being edited
   noremap <buffer> <S-e> :w<CR>:!/usr/bin/env python2 % <CR>
-" Turn the color column on and off
+
+" Colorcolumn stuff 
   noremap <Leader>8 <Esc>:call <SID>ToggleColorColumn()<CR>
-" Turn the 72-col color column on and off 
   noremap <Leader>7 <Esc>:call <SID>ToggleFormatColumn()<CR>
+
 " Close a buffer
   noremap <Leader><F1> <Esc>:call CleanClose(1)<CR>
 " Set 4-space tabs
@@ -124,7 +125,7 @@
 " `````````````````````````````````````````````````````````````````````````````
   let NERDTreeMinimalUI=1       " Disable the goofy '? for help' message
   let NERDChristmasTree=1       " Tells the NERD tree to make itself colourful
-  let NERDTreeWinSize=20        " Default is 31
+  let NERDTreeWinSize=31        " Default is 31
 
 " buftabs 
 " `````````````````````````````````````````````````````````````````````````````
@@ -143,7 +144,9 @@
 " ToggleColorColumn() 
 " `````````````````````````````````````````````````````````````````````````````
   hi ColorColumn ctermbg=108
-  set colorcolumn=81            " The column to be colored 
+  if exists('+colorcolumn')
+          set colorcolumn=81            " The column to be colored 
+  endif
   let s:color_column_old=0      " ToggleColorColumn by default
 
   function! s:ToggleColorColumn()
@@ -176,6 +179,37 @@
     exe "bd".todelbufNr
     call Buftabs_show(todelbufNr)
   endfunction
+
+" QFDo() -- Run a command on each item in the quickfix buffer.
+" ````````````````````````````````````````````````````````````
+function! QFDo(command)
+    " Create a dictionary so that we can get the list of 
+    " buffers rather than the list of lines in buffers
+    " (easy way to get unique entries).
+    let buffer_numbers = {}
+    " For each entry, use the buffer number as a dictionary 
+    " key (won't get repeats).
+    for fixlist_entry in getqflist()
+        let buffer_numbers[fixlist_entry['bufnr']] = 1
+    endfor
+    " Make it into a list as it seems cleaner
+    let buffer_number_list = keys(buffer_numbers)
+
+    " For each buffer
+    for num in buffer_number_list
+        " Select the buffer
+        exe 'buffer' num
+        " Run the command that's passed as an argument
+        exe a:command
+        " Save if necessary
+        update
+    endfor
+endfunction
+
+" Define a command to make it easier to use
+command! -nargs=+ QFDo call QFDo(<q-args>)
+
+
 " =============================================================================
 
 
