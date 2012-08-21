@@ -98,7 +98,6 @@
   noremap <F6> :set invpaste paste?<CR>
   set pastetoggle=<F6>
   set showmode
-
 " Execute python file being edited
   noremap <buffer> <S-e> :w<CR>:!/usr/bin/env python2 % <CR>
 " Turn the color column on and off
@@ -124,6 +123,8 @@
 " NERDTree 
 " `````````````````````````````````````````````````````````````````````````````
   let NERDTreeMinimalUI=1       " Disable the goofy '? for help' message
+  let NERDChristmasTree=1       " Tells the NERD tree to make itself colourful
+  let NERDTreeWinSize=20        " Default is 31
 
 " buftabs 
 " `````````````````````````````````````````````````````````````````````````````
