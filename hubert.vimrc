@@ -94,6 +94,11 @@
 
 " Vimscripts and custom functions 
 " `````````````````````````````````````````````````````````````````````````````
+" Keep pasted buffer from being auto-indented and print mode value.
+  noremap <F6> :set invpaste paste?<CR>
+  set pastetoggle=<F6>
+  set showmode
+
 " Execute python file being edited
   noremap <buffer> <S-e> :w<CR>:!/usr/bin/env python2 % <CR>
 " Turn the color column on and off
