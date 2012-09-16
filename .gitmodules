@@ -7,3 +7,6 @@
 [submodule "repo/nerdcommenter"]
 	path = repo/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "repo/indent-guides"]
+	path = repo/indent-guides
+	url = git://github.com/nathanaelkane/vim-indent-guides.git

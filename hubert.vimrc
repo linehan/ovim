@@ -44,15 +44,19 @@
 
 " Automatic formatting 
 " `````````````````````````````````````````````````````````````````````````````
-  set cindent               " Indent lines with C style indentation 
-  set backspace=2           " Make backspace key behave itself
-  set formatoptions=c,q,r,t " c - Auto-wrap comments using textwidth
-                            " q - Allow formatting of comments with 'gq'
-                            " r - Automatically insert comment leader
-                            " t - Auto-wrap text using textwidth
-  autocmd FileType make     " When editing a Makefile...
-  \setlocal noexpandtab     " always insert hard tabs
-"  filetype plugin indent on " enable filetype plugins and indentation
+  set cindent                " Indent lines with C style indentation 
+  set backspace=2            " Make backspace key behave itself
+  set formatoptions=c,q,r,t  " c - Auto-wrap comments using textwidth
+                             " q - Allow formatting of comments with 'gq'
+                             " r - Automatically insert comment leader
+                             " t - Auto-wrap text using textwidth
+  autocmd FileType make      " When editing a Makefile...
+      \ setlocal noexpandtab " always insert hard tabs
+
+  autocmd BufRead,BufNewFile *.py
+      \ setfiletype python
+
+  filetype plugin indent on
 
 " Pattern matching 
 " `````````````````````````````````````````````````````````````````````````````
@@ -66,7 +70,6 @@
   set showmatch             " Jump to matching bracket
   set matchtime=3           " Duration of matching bracket highlight
 " =============================================================================
-
 
 
 " KEYBINDINGS 
