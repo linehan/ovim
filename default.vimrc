@@ -145,9 +145,9 @@
 " `````````````````````````````````````````````````````````````````````````````
   hi ColorColumn ctermbg=108
   if exists('+colorcolumn')
-          set colorcolumn=81            " The column to be colored 
+          set colorcolumn=81 " The column to be colored 
   endif
-  let s:color_column_old=0      " ToggleColorColumn by default
+  let s:color_column_old=0 " ToggleColorColumn by default
 
   function! s:ToggleColorColumn()
         if s:color_column_old == 0
@@ -158,6 +158,7 @@
                 let s:color_column_old = 0
         endif
   endfunction
+
 
 " CleanClose() -- close a buffer and update buftabs without disturbing windows
 " `````````````````````````````````````````````````````````````````````````````
@@ -179,6 +180,7 @@
     exe "bd".todelbufNr
     call Buftabs_show(todelbufNr)
   endfunction
+
 
 " QFDo() -- Run a command on each item in the quickfix buffer.
 " ````````````````````````````````````````````````````````````
