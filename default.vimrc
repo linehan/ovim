@@ -164,11 +164,8 @@
   if exists('+colorcolumn')
           set colorcolumn=81 " The column to be colored 
   endif
-<<<<<<< HEAD:hubert.vimrc
-  let s:color_column_old=0      " T>oggleColorColumn by default
-=======
-  let s:color_column_old=0 " ToggleColorColumn by default
->>>>>>> 22b0f32ce977ed739a88cbbbfcde135c562ead0f:default.vimrc
+
+  let s:color_column_old=0   " ToggleColorColumn by default
 
   function! s:ToggleColorColumn()
         if s:color_column_old == 0
