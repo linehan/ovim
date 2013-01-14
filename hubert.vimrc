@@ -138,6 +138,23 @@
 " =============================================================================
 
 
+" ABBREVIATIONS 
+" =============================================================================
+" Section flowerbox (80 column)
+" `````````````````````````````````````````````````````````````````````````````
+  iab __FULL 
+\<CR>/******************************************************************************
+\<CR> * SECTION 
+\<CR> ******************************************************************************/
+
+" Subsection flowerbox (50 column)
+" `````````````````````````````````````````````````````````````````````````````
+  iab __HALF 
+\<CR>/*************************************************                                                                                                                                
+\<CR> * SUBSECTION 
+\<CR> *************************************************/
+" =============================================================================
+
 
 " VIMSCRIPTS 
 " =============================================================================
@@ -147,7 +164,7 @@
   if exists('+colorcolumn')
           set colorcolumn=81            " The column to be colored 
   endif
-  let s:color_column_old=0      " ToggleColorColumn by default
+  let s:color_column_old=0      " T>oggleColorColumn by default
 
   function! s:ToggleColorColumn()
         if s:color_column_old == 0
@@ -180,9 +197,9 @@
     call Buftabs_show(todelbufNr)
   endfunction
 
-" QFDo() -- Run a command on each item in the quickfix buffer.
+" Each() -- Run a command on each item in the quickfix buffer.
 " ````````````````````````````````````````````````````````````
-function! QFDo(command)
+function! Each(command)
     " Create a dictionary so that we can get the list of 
     " buffers rather than the list of lines in buffers
     " (easy way to get unique entries).
@@ -207,7 +224,7 @@ function! QFDo(command)
 endfunction
 
 " Define a command to make it easier to use
-command! -nargs=+ QFDo call QFDo(<q-args>)
+command! -nargs=+ Each call Each(<q-args>)
 
 
 " =============================================================================
