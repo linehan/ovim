@@ -23,6 +23,16 @@ spinner()
 CURRENT_DIR=`pwd`
 DEFAULT_CFG="default.vimrc"
 
+
+if [ "$1" == "link" ]; then
+	echo -n "Linking ovim submodules ..."
+	spinner ln --symbolic --no-target-directory $CURRENT_DIR ~/.vim
+	spinner ln --symbolic --no-target-directory $CURRENT_DIR/$DEFAULT_CFG ~/.vimrc
+	echo " done"
+	exit
+fi
+
+
 echo -n "Updating ovim submodules ..."
 
 spinner git submodule --quiet init
@@ -41,5 +51,10 @@ directory. To use it, create the following symlinks:
 If you wish to use your own .vimrc file, simply link against
 that file instead of the included one.
 
+These links can be created automatically by running this install
+script with the argument "link".
+
 USAGE
+
+
 
