@@ -65,6 +65,18 @@
 " `````````````````````````````````````````````````````````````````````````````
   set showmatch             " Jump to matching bracket
   set matchtime=3           " Duration of matching bracket highlight
+
+" Temporary files (.swp) 
+" `````````````````````````````````````````````````````````````````````````````
+" Automatically create .backup directory, writable by the group.
+  if filewritable(".") && ! filewritable(".backup")
+    silent execute '!umask 002; mkdir .backup'
+  endif
+
+  set backupdir=./.backup,.,/tmp " Put swap files in .backup or /tmp
+  set directory=.,./.backup,/tmp " Put swap files in .backup or /tmp
+
+
 " =============================================================================
 
 
@@ -144,15 +156,15 @@
 " `````````````````````````````````````````````````````````````````````````````
   iab __FULL 
 \<CR>/******************************************************************************
-\<CR> * SECTION 
-\<CR> ******************************************************************************/
+\<CR><Left> SECTION 
+\<CR><Left>*****************************************************************************/
 
 " Subsection flowerbox (50 column)
 " `````````````````````````````````````````````````````````````````````````````
   iab __HALF 
 \<CR>/*************************************************                                                                                                                                
-\<CR> * SUBSECTION 
-\<CR> *************************************************/
+\<CR><Left> SUBSECTION 
+\<CR><Left>************************************************/
 " =============================================================================
 
 
@@ -227,6 +239,8 @@ endfunction
 
 " Define a command to make it easier to use
 command! -nargs=+ Each call Each(<q-args>)
+
+
 
 
 " =============================================================================
