@@ -125,7 +125,7 @@
 " Close a buffer
   noremap <Leader>1 <Esc>:call CleanClose(1)<CR>
 " Cycle between 4- and 8-space tabs
-  noremap <Leader>p <Esc>:call <SID>CycleTabStop()<CR>
+  noremap <Leader>p <Esc>:call CycleTabStop()<CR>
   noremap <Leader>s :Gstatus<CR>
   noremap <Leader>c :Gcommit<CR>
 
@@ -177,12 +177,14 @@
 " VIMSCRIPTS 
 " =============================================================================
 " CycleTabStop() 
-" `````````````````````````````````````````````````````````````````````````````
+" ````````````````````````````````````````````````````````````````````````````` 
   function! CycleTabStop()
-        if (g:tabstop == 8)
+        if (&tabstop == 8)
                 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+                echo "4-space tabs"
         else
                 set tabstop=8 softtabstop=8 shiftwidth=8 expandtab
+                echo "8-space tabs"
         endif
   endfunction
 
