@@ -67,6 +67,10 @@
   set showmatch             " Jump to matching bracket
   set matchtime=3           " Duration of matching bracket highlight
 
+" Folding 
+" `````````````````````````````````````````````````````````````````````````````
+  set foldmethod=indent
+
 " Temporary files (.swp) 
 " `````````````````````````````````````````````````````````````````````````````
 " Automatically create .backup directory, writable by the group.
@@ -124,6 +128,7 @@
   noremap <Leader>p <Esc>:call <SID>CycleTabStop()<CR>
   noremap <Leader>s :Gstatus<CR>
   noremap <Leader>c :Gcommit<CR>
+
 " =============================================================================
 
 
@@ -251,7 +256,17 @@ endfunction
 " Define a command to make it easier to use
 command! -nargs=+ Each call Each(<q-args>)
 
+""
+" R() 
+" `````
+" Replace the word under the cursor with another string 
+" @replace_with: Word to replace <cword>
+function! R(replace_with)
+    execute ":%s/" . expand("<cword>") . "/" . a:replace_with . "/gc"
+endfunction
 
+" Define a command to make it easier to use
+command! -nargs=+ R call R(<q-args>)
 
 
 " =============================================================================
