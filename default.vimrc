@@ -53,6 +53,7 @@
   autocmd FileType make     " When editing a Makefile...
   \setlocal noexpandtab     " always insert hard tabs
 "  filetype plugin indent on " enable filetype plugins and indentation
+  set foldmethod=indent
 
 " Pattern matching 
 " `````````````````````````````````````````````````````````````````````````````
@@ -118,9 +119,9 @@
   noremap <Leader>7 <Esc>:call <SID>ToggleFormatColumn()<CR>
 
 " Close a buffer
-  noremap <Leader><F1> <Esc>:call CleanClose(1)<CR>
-" Set 4-space tabs
-  noremap <Leader>p <Esc>:set softtabstop=4 shiftwidth=4 expandtab<CR>
+  noremap <Leader>1 <Esc>:call CleanClose(1)<CR>
+" Cycle between 4- and 8-space tabs
+  noremap <Leader>p <Esc>:call <SID>CycleTabStop()<CR>
   noremap <Leader>s :Gstatus<CR>
   noremap <Leader>c :Gcommit<CR>
 " =============================================================================
@@ -170,6 +171,16 @@
 
 " VIMSCRIPTS 
 " =============================================================================
+" CycleTabStop() 
+" `````````````````````````````````````````````````````````````````````````````
+  function! CycleTabStop()
+        if (g:tabstop == 8)
+                set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+        else
+                set tabstop=8 softtabstop=8 shiftwidth=8 expandtab
+        endif
+  endfunction
+
 " ToggleColorColumn() 
 " `````````````````````````````````````````````````````````````````````````````
   hi ColorColumn ctermbg=108
