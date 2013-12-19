@@ -52,7 +52,7 @@
                             " t - Auto-wrap text using textwidth
   autocmd FileType make     " When editing a Makefile...
   \setlocal noexpandtab     " always insert hard tabs
-"  filetype plugin indent on " enable filetype plugins and indentation
+  filetype plugin indent on " enable filetype plugins and indentation
 
 " Pattern matching 
 " `````````````````````````````````````````````````````````````````````````````
@@ -65,6 +65,10 @@
 " `````````````````````````````````````````````````````````````````````````````
   set showmatch             " Jump to matching bracket
   set matchtime=3           " Duration of matching bracket highlight
+
+" Folding 
+" `````````````````````````````````````````````````````````````````````````````
+  set foldmethod=indent
 
 " Temporary files (.swp) 
 " `````````````````````````````````````````````````````````````````````````````
@@ -118,11 +122,12 @@
   noremap <Leader>7 <Esc>:call <SID>ToggleFormatColumn()<CR>
 
 " Close a buffer
-  noremap <Leader><F1> <Esc>:call CleanClose(1)<CR>
+  noremap <Leader>1 <Esc>:call CleanClose(1)<CR>
 " Set 4-space tabs
   noremap <Leader>p <Esc>:set softtabstop=4 shiftwidth=4 expandtab<CR>
   noremap <Leader>s :Gstatus<CR>
   noremap <Leader>c :Gcommit<CR>
+
 " =============================================================================
 
 
@@ -240,7 +245,17 @@ endfunction
 " Define a command to make it easier to use
 command! -nargs=+ Each call Each(<q-args>)
 
+""
+" R() 
+" `````
+" Replace the word under the cursor with another string 
+" @replace_with: Word to replace <cword>
+function! R(replace_with)
+    execute ":%s/" . expand("<cword>") . "/" . a:replace_with . "/gc"
+endfunction
 
+" Define a command to make it easier to use
+command! -nargs=+ R call R(<q-args>)
 
 
 " =============================================================================
