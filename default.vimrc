@@ -52,6 +52,7 @@
                             " t - Auto-wrap text using textwidth
   autocmd FileType make setlocal noexpandtab " Hard tabs in a Makefile
 "  filetype plugin indent on " enable filetype plugins and indentation
+  set foldmethod=indent
 
 " Pattern matching 
 " `````````````````````````````````````````````````````````````````````````````
@@ -74,6 +75,17 @@
 "  set tw=80                 " Text width is 80 characters 
                             " To adjust a visual selection : gq
                             " To adjust the entire document: gqG
+
+" Temporary files (.swp) 
+" `````````````````````````````````````````````````````````````````````````````
+" Automatically create .backup directory, writable by the group.
+  if filewritable(".") && ! filewritable(".backup")
+        silent execute '!umask 002; mkdir .backup'
+  endif
+
+  set backupdir=./.backup,.,/tmp " Put swap files in .backup or /tmp
+  set directory=.,./.backup,/tmp " Put swap files in .backup or /tmp
+
 " =============================================================================
 
 
@@ -115,11 +127,12 @@
   noremap <Leader>7 <Esc>:call <SID>ToggleFormatColumn()<CR>
 
 " Close a buffer
-  noremap <Leader><F1> <Esc>:call CleanClose(1)<CR>
-" Set 4-space tabs
-  noremap <Leader>p <Esc>:set softtabstop=4 shiftwidth=4 expandtab<CR>
+  noremap <Leader>1 <Esc>:call CleanClose(1)<CR>
+" Cycle between 4- and 8-space tabs
+  noremap <Leader>p <Esc>:call CycleTabStop()<CR>
   noremap <Leader>s :Gstatus<CR>
   noremap <Leader>c :Gcommit<CR>
+
 " =============================================================================
 
 
@@ -153,20 +166,32 @@
 " `````````````````````````````````````````````````````````````````````````````
   iab __FULL 
 \<CR>/******************************************************************************
-\<CR> * SECTION 
-\<CR> ******************************************************************************/
+\<CR><Left> SECTION 
+\<CR><Left>*****************************************************************************/
 
 " Subsection flowerbox (50 column)
 " `````````````````````````````````````````````````````````````````````````````
   iab __HALF 
 \<CR>/*************************************************                                                                                                                                
-\<CR> * SUBSECTION 
-\<CR> *************************************************/
+\<CR><Left> SUBSECTION 
+\<CR><Left>************************************************/
 " =============================================================================
 
 
 " VIMSCRIPTS 
 " =============================================================================
+" CycleTabStop() 
+" ````````````````````````````````````````````````````````````````````````````` 
+  function! CycleTabStop()
+        if (&tabstop == 8)
+                set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+                echo "4-space tabs"
+        else
+                set tabstop=8 softtabstop=8 shiftwidth=8 expandtab
+                echo "8-space tabs"
+        endif
+  endfunction
+
 " ToggleColorColumn() 
 " `````````````````````````````````````````````````````````````````````````````
   hi ColorColumn ctermbg=108
@@ -236,6 +261,18 @@ endfunction
 
 " Define a command to make it easier to use
 command! -nargs=+ Each call Each(<q-args>)
+
+""
+" R() 
+" `````
+" Replace the word under the cursor with another string 
+" @replace_with: Word to replace <cword>
+function! R(replace_with)
+    execute ":%s/" . expand("<cword>") . "/" . a:replace_with . "/gc"
+endfunction
+
+" Define a command to make it easier to use
+command! -nargs=+ R call R(<q-args>)
 
 
 " =============================================================================
