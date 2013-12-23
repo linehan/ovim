@@ -50,8 +50,7 @@
                             " q - Allow formatting of comments with 'gq'
                             " r - Automatically insert comment leader
                             " t - Auto-wrap text using textwidth
-  autocmd FileType make     " When editing a Makefile...
-  \setlocal noexpandtab     " always insert hard tabs
+  autocmd FileType make setlocal noexpandtab " Hard tabs in a Makefile
 "  filetype plugin indent on " enable filetype plugins and indentation
 
 " Pattern matching 
@@ -65,6 +64,16 @@
 " `````````````````````````````````````````````````````````````````````````````
   set showmatch             " Jump to matching bracket
   set matchtime=3           " Duration of matching bracket highlight
+
+" Folding 
+" `````````````````````````````````````````````````````````````````````````````
+  set foldmethod=indent     " Fold on indentations 
+
+" Text wrap and line break 
+" `````````````````````````````````````````````````````````````````````````````
+"  set tw=80                 " Text width is 80 characters 
+                            " To adjust a visual selection : gq
+                            " To adjust the entire document: gqG
 " =============================================================================
 
 
