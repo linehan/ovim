@@ -157,6 +157,16 @@
   let g:buftabs_in_statusline=1 " Display buftabs in statusline
   let g:buftabs_active_highlight_group="StatusLineNC" " active buffer color
   let g:buftabs_inactive_highlight_group="VisualNOS"  " inactive buffer color
+
+
+" dragvisuals 
+" `````````````````````````````````````````````````````````````````````````````
+  vmap <expr> <LEFT>  DVB_Drag('left')  
+  vmap <expr> <RIGHT> DVB_Drag('right')
+  vmap <expr> <DOWN>  DVB_Drag('down')
+  vmap <expr> <UP>    DVB_Drag('up')
+  vmap <expr> D       DVB_Duplicate()
+  let g:DVB_TrimWS=1 " Remove any introduced trailing ws after moving
 " =============================================================================
 
 
