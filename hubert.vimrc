@@ -18,15 +18,20 @@
 
 " Display 
 " `````````````````````````````````````````````````````````````````````````````
+  set encoding=utf-8
   set showcmd               " Show (partial) command in status line.
   set number                " Show line numbers.
   set ruler                 " Show the current line and column
   set fillchars=fold:\      " Set fold fill characters (default is '-') 
   set laststatus=2          " Show statusline even with one open buffer
 
+
+  set foldmethod=marker
 " Colors 
 " `````````````````````````````````````````````````````````````````````````````
   set t_Co=256              " Enable 256 color support
+  syntax enable
+  set background=dark
   colorscheme zenburn       " Set the default colorscheme
   syntax on                 " Enable syntax highlighting
 
@@ -37,9 +42,9 @@
 
 " Tabs 
 " `````````````````````````````````````````````````````````````````````````````
-  set tabstop=8             " Set width of hard tab
-  set softtabstop=8         " Set number of spaces in soft tab
-  set shiftwidth=8          " Set number of spaces to auto-indent
+  set tabstop=4             " Set width of hard tab
+  set softtabstop=4         " Set number of spaces in soft tab
+  set shiftwidth=4          " Set number of spaces to auto-indent
   set expandtab             " Always insert soft tabs (spaces) 
 
 " Automatic formatting 
@@ -56,7 +61,29 @@
   autocmd BufRead,BufNewFile *.py
       \ setfiletype python
 
+  autocmd BufRead,BufNewFile *.html
+      \ setfiletype html 
+
+  autocmd BufRead,BufNewFile *.js
+      \ setfiletype javascript
+
+  autocmd BufRead,BufNewFile *.json
+      \ setfiletype javascript
+
+  autocmd BufRead,BufNewFile *.topojson
+      \ setfiletype javascript
+  
+  autocmd BufRead,BufNewFile *.geojson
+      \ setfiletype javascript
+
+  autocmd BufRead,BufNewFile *.coffee
+      \ setfiletype coffeescript
+
   filetype plugin indent on
+
+  autocmd FileType html :setlocal sw=2 ts=2 sts=2
+  autocmd FileType javascript :setlocal sw=4 ts=4 sts=4
+  autocmd FileType coffeescript :setlocal sw=2 ts=2 sts=2
 
 " Pattern matching 
 " `````````````````````````````````````````````````````````````````````````````
@@ -209,10 +236,4 @@ function! QFDo(command)
     endfor
 endfunction
 
-" Define a command to make it easier to use
-command! -nargs=+ QFDo call QFDo(<q-args>)
-
-
 " =============================================================================
-
-
