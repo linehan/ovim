@@ -237,3 +237,5 @@ function! QFDo(command)
 endfunction
 
 " =============================================================================
+let NERDTreeIgnore = ['\.pyc$']
+"

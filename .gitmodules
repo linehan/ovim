@@ -22,3 +22,6 @@
 [submodule "repo/javascript-libraries-syntax.vim"]
 	path = repo/javascript-libraries-syntax.vim
 	url = https://github.com/othree/javascript-libraries-syntax.vim.git
+[submodule "bundle/puppet"]
+	path = bundle/puppet
+	url = git://github.com/rodjek/vim-puppet.git
