@@ -7,21 +7,9 @@
 [submodule "repo/nerdcommenter"]
 	path = repo/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "repo/indent-guides"]
-	path = repo/indent-guides
-	url = git://github.com/nathanaelkane/vim-indent-guides.git
 [submodule "powerline"]
 	path = powerline
 	url = git://github.com/Lokaltog/powerline
-[submodule "repo/vim-colors-solarized"]
-	path = repo/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/vim-coffee-script"]
-	path = bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "repo/javascript-libraries-syntax.vim"]
-	path = repo/javascript-libraries-syntax.vim
-	url = https://github.com/othree/javascript-libraries-syntax.vim.git
 [submodule "bundle/puppet"]
 	path = bundle/puppet
 	url = git://github.com/rodjek/vim-puppet.git

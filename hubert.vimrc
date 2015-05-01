@@ -26,7 +26,13 @@
   set laststatus=2          " Show statusline even with one open buffer
 
 
+" Enable modelines
+" `````````````````````````````````````````````````````````````````````````````
+  set modeline
+  set modelines=1000
+
   set foldmethod=marker
+
 " Colors 
 " `````````````````````````````````````````````````````````````````````````````
   set t_Co=256              " Enable 256 color support
@@ -64,7 +70,10 @@
   autocmd BufRead,BufNewFile *.html
       \ setfiletype html 
 
-  autocmd BufRead,BufNewFile *.js
+  autocmd BufRead,BufNewFile *.js 
+      \ setfiletype javascript
+
+  autocmd BufRead,BufNewFile *.jsx
       \ setfiletype javascript
 
   autocmd BufRead,BufNewFile *.json
@@ -79,11 +88,13 @@
   autocmd BufRead,BufNewFile *.coffee
       \ setfiletype coffeescript
 
-  filetype plugin indent on
+  autocmd BufRead,BufNewFile *.bones
+      \ setfiletype javascript
 
-  autocmd FileType html :setlocal sw=2 ts=2 sts=2
-  autocmd FileType javascript :setlocal sw=4 ts=4 sts=4
-  autocmd FileType coffeescript :setlocal sw=2 ts=2 sts=2
+  "filetype plugin indent on
+
+" autocmd FileType html :setlocal sw=2 ts=2 sts=2
+  autocmd FileType javascript :setlocal sw=2 ts=2 sts=2
 
 " Pattern matching 
 " `````````````````````````````````````````````````````````````````````````````
@@ -127,7 +138,7 @@
 " Keep pasted buffer from being auto-indented and print mode value.
   noremap <F6> :set invpaste paste?<CR>
   set pastetoggle=<F6>
-  set showmode
+"  set showmode
 " Execute python file being edited
   noremap <buffer> <S-e> :w<CR>:!/usr/bin/env python2 % <CR>
 
@@ -237,5 +248,5 @@ function! QFDo(command)
 endfunction
 
 " =============================================================================
-let NERDTreeIgnore = ['\.pyc$']
-"
+let NERDTreeIgnore = ['\.pyc$', 'node_modules']
+
