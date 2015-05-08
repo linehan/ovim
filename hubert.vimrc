@@ -122,6 +122,7 @@
 " NERDTree 
 " `````````````````````````````````````````````````````````````````````````````
   noremap <Leader>n :NERDTreeToggle<CR>
+  noremap <Leader>t :TagbarToggle<CR>
 
 " Buffers/buftabs 
 " `````````````````````````````````````````````````````````````````````````````
@@ -250,3 +251,8 @@ endfunction
 " =============================================================================
 let NERDTreeIgnore = ['\.pyc$', 'node_modules']
 
+" Change keybindings for moving between windows
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-l> :wincmd l<CR>
