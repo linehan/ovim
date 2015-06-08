@@ -18,15 +18,26 @@
 
 " Display 
 " `````````````````````````````````````````````````````````````````````````````
+  set encoding=utf-8
   set showcmd               " Show (partial) command in status line.
   set number                " Show line numbers.
   set ruler                 " Show the current line and column
   set fillchars=fold:\      " Set fold fill characters (default is '-') 
   set laststatus=2          " Show statusline even with one open buffer
 
+
+" Enable modelines
+" `````````````````````````````````````````````````````````````````````````````
+  set modeline
+  set modelines=1000
+
+  set foldmethod=marker
+
 " Colors 
 " `````````````````````````````````````````````````````````````````````````````
   set t_Co=256              " Enable 256 color support
+  syntax enable
+  set background=dark
   colorscheme zenburn       " Set the default colorscheme
   syntax on                 " Enable syntax highlighting
 
@@ -37,22 +48,53 @@
 
 " Tabs 
 " `````````````````````````````````````````````````````````````````````````````
-  set tabstop=8             " Set width of hard tab
-  set softtabstop=8         " Set number of spaces in soft tab
-  set shiftwidth=8          " Set number of spaces to auto-indent
+  set tabstop=4             " Set width of hard tab
+  set softtabstop=4         " Set number of spaces in soft tab
+  set shiftwidth=4          " Set number of spaces to auto-indent
   set expandtab             " Always insert soft tabs (spaces) 
 
 " Automatic formatting 
 " `````````````````````````````````````````````````````````````````````````````
-  set cindent               " Indent lines with C style indentation 
-  set backspace=2           " Make backspace key behave itself
-  set formatoptions=c,q,r,t " c - Auto-wrap comments using textwidth
-                            " q - Allow formatting of comments with 'gq'
-                            " r - Automatically insert comment leader
-                            " t - Auto-wrap text using textwidth
-  autocmd FileType make     " When editing a Makefile...
-  \setlocal noexpandtab     " always insert hard tabs
-"  filetype plugin indent on " enable filetype plugins and indentation
+  set cindent                " Indent lines with C style indentation 
+  set backspace=2            " Make backspace key behave itself
+  set formatoptions=c,q,r,t  " c - Auto-wrap comments using textwidth
+                             " q - Allow formatting of comments with 'gq'
+                             " r - Automatically insert comment leader
+                             " t - Auto-wrap text using textwidth
+  autocmd FileType make      " When editing a Makefile...
+      \ setlocal noexpandtab " always insert hard tabs
+
+  autocmd BufRead,BufNewFile *.py
+      \ setfiletype python
+
+  autocmd BufRead,BufNewFile *.html
+      \ setfiletype html 
+
+  autocmd BufRead,BufNewFile *.js 
+      \ setfiletype javascript
+
+  autocmd BufRead,BufNewFile *.jsx
+      \ setfiletype javascript
+
+  autocmd BufRead,BufNewFile *.json
+      \ setfiletype javascript
+
+  autocmd BufRead,BufNewFile *.topojson
+      \ setfiletype javascript
+  
+  autocmd BufRead,BufNewFile *.geojson
+      \ setfiletype javascript
+
+  autocmd BufRead,BufNewFile *.coffee
+      \ setfiletype coffeescript
+
+  autocmd BufRead,BufNewFile *.bones
+      \ setfiletype javascript
+
+  "filetype plugin indent on
+
+" autocmd FileType html :setlocal sw=2 ts=2 sts=2
+  autocmd FileType javascript :setlocal sw=2 ts=2 sts=2
 
 " Pattern matching 
 " `````````````````````````````````````````````````````````````````````````````
@@ -68,7 +110,6 @@
 " =============================================================================
 
 
-
 " KEYBINDINGS 
 " =============================================================================
 " Cursor movement 
@@ -81,6 +122,7 @@
 " NERDTree 
 " `````````````````````````````````````````````````````````````````````````````
   noremap <Leader>n :NERDTreeToggle<CR>
+  noremap <Leader>t :TagbarToggle<CR>
 
 " Buffers/buftabs 
 " `````````````````````````````````````````````````````````````````````````````
@@ -97,7 +139,7 @@
 " Keep pasted buffer from being auto-indented and print mode value.
   noremap <F6> :set invpaste paste?<CR>
   set pastetoggle=<F6>
-  set showmode
+"  set showmode
 " Execute python file being edited
   noremap <buffer> <S-e> :w<CR>:!/usr/bin/env python2 % <CR>
 
@@ -206,10 +248,11 @@ function! QFDo(command)
     endfor
 endfunction
 
-" Define a command to make it easier to use
-command! -nargs=+ QFDo call QFDo(<q-args>)
-
-
 " =============================================================================
+let NERDTreeIgnore = ['\.pyc$', 'node_modules']
 
-
+" Change keybindings for moving between windows
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-l> :wincmd l<CR>

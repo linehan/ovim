@@ -7,3 +7,12 @@
 [submodule "repo/nerdcommenter"]
 	path = repo/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "powerline"]
+	path = powerline
+	url = git://github.com/Lokaltog/powerline
+[submodule "bundle/puppet"]
+	path = bundle/puppet
+	url = git://github.com/rodjek/vim-puppet.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git@github.com:majutsushi/tagbar.git
