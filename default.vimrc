@@ -54,6 +54,9 @@
 "  filetype plugin indent on " enable filetype plugins and indentation
   set foldmethod=indent
 
+" Allows NERDCommenter to use filetypes for file-specific comment styles 
+  filetype plugin on
+
 " Pattern matching 
 " `````````````````````````````````````````````````````````````````````````````
   set hlsearch              " Highlight all matches
@@ -124,7 +127,7 @@
 
 " Colorcolumn stuff 
   noremap <Leader>8 <Esc>:call <SID>ToggleColorColumn()<CR>
-  noremap <Leader>7 <Esc>:call <SID>ToggleFormatColumn()<CR>
+  noremap <Leader>7 <Esc>:call <SID>ToggleColorColumnFORTRAN77()<CR>
 
 " Close a buffer
   noremap <Leader>1 <Esc>:call CleanClose(1)<CR>
@@ -132,6 +135,26 @@
   noremap <Leader>p <Esc>:call CycleTabStop()<CR>
   noremap <Leader>s :Gstatus<CR>
   noremap <Leader>c :Gcommit<CR>
+
+" Replace all newlines in current selection with whitespace (for wrapping)
+  noremap <Leader>w <Esc>:'<,'>s/\n/ /g<CR><Esc>:noh<CR>
+"  noremap <Leader>w <Esc>:s/\%V\r/ /g<CR>
+"  :s/\%V /_/g
+
+" Ack under the cursor
+  noremap <Leader>a <Esc>:call AckUnderCursor()<CR>
+
+" HTML Escaping
+  " escape each line in last pasted text
+  nnoremap <Leader>h :'[,']call HtmlEscape()<CR>
+  " escape each line in visual selection
+  vnoremap <Leader>h :call HtmlEscape()<CR>
+
+  function HtmlEscape()
+    silent s/&/\&amp;/eg
+    silent s/</\&lt;/eg
+    silent s/>/\&gt;/eg
+  endfunction
 
 " =============================================================================
 
@@ -210,6 +233,7 @@
   endif
 
   let s:color_column_old=0   " ToggleColorColumn by default
+  "let s:color_column_f77="0,6,73,81"
 
   function! s:ToggleColorColumn()
         if s:color_column_old == 0
@@ -284,6 +308,15 @@ endfunction
 " Define a command to make it easier to use
 command! -nargs=+ R call R(<q-args>)
 
+""
+" AckUnderCursor()
+" ~~~~~~~~~~~~~~~~
+" Ack for the word under the cursor
+"
+function! AckUnderCursor()
+        let wordUnderCursor = expand("<cword>")
+        call Ack(wordUnderCursor)
+endfunction
 
 " =============================================================================
 
