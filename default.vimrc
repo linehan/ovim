@@ -34,6 +34,7 @@
 " `````````````````````````````````````````````````````````````````````````````
   set autowriteall          " Auto-write a modified file (autosave)
   set hidden                " Enable hiding existing buffers
+  autocmd BufWritePre * :%s/\s\+$//e " Remove trailing whitespace on save
 
 " Tabs 
 " `````````````````````````````````````````````````````````````````````````````
@@ -156,6 +157,7 @@
     silent s/>/\&gt;/eg
   endfunction
 
+
 " =============================================================================
 
 
@@ -190,6 +192,11 @@
   vmap <expr> <UP>    DVB_Drag('up')
   vmap <expr> D       DVB_Duplicate()
   let g:DVB_TrimWS=1 " Remove any introduced trailing ws after moving
+
+
+" tagbar 
+" `````````````````````````````````````````````````````````````````````````````
+  nmap <Leader>t :TagbarToggle<CR>
 " =============================================================================
 
 
@@ -213,6 +220,41 @@
 
 " VIMSCRIPTS 
 " =============================================================================
+" WMFStyle() 
+" ````````````````````````````````````````````````````````````````````````````` 
+" Call the function
+  noremap <Leader>g <Esc>:call WMFStyle()<CR>
+
+  function! WMFStyle()
+        " State variable to allow toggling 
+        if !exists('g:WMFStyle_active')
+                let g:WMFStyle_active = 0
+        endif
+
+        if g:WMFStyle_active == 0 
+                " Save the user's default style options 
+                let g:WMFStyle_saved_tabstop     = &tabstop
+                let g:WMFStyle_saved_shiftwidth  = &shiftwidth
+                let g:WMFStyle_saved_noexpandtab = &expandtab
+
+                " Apply the WMF's preferred formatting style 
+                set tabstop=8    " Width of hard tab in columns
+                set shiftwidth=8 " Number of columns <<, >> will indent
+                set expandtab!   " Do not expand tabs to spaces 
+
+                echo "WMF Code Style Active"
+        elseif g:WMFStyle_active == 1
+                " Re-apply the user's default style options 
+                set tabstop    = g:WMFStyle_saved_tabstop
+                set shiftwidth = g:WMFStyle_saved_shiftwidth
+                set expandtab  = g:WMFStyle_saved_noexpandtab 
+
+                echo "WMF Code Style Deactivated"
+        endif
+  endfunction
+
+
+
 " CycleTabStop() 
 " ````````````````````````````````````````````````````````````````````````````` 
   function! CycleTabStop()
