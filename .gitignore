@@ -1,0 +1,28 @@
+# Prevent cloned submodules or symlinks from being added to the repository
+        plugins-github/*
+        bundle/*
+
+# Junk left behind by...
+# autotools
+        *.log
+        *.cache
+        *.m4
+        *.o
+        */*/*.o
+        depcomp
+        install-sh
+        missing
+        configure
+        config.status
+
+# gprof
+        *.out
+        */*.out
+
+# objdump
+        *.s
+
+# vim
+        *.swp
+        .*.sw*
+        */*/.*.sw* # ffs
