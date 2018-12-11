@@ -1,7 +1,3 @@
-# Prevent cloned submodules or symlinks from being added to the repository
-        plugins-github/*
-        bundle/*
-
 # Junk left behind by...
 # autotools
         *.log
