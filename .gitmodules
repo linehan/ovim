@@ -1,12 +1,12 @@
 [submodule "plugins-github/nerdcommenter"]
-        path = plugins-github/nerdcommenter
+	path = plugins-github/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "plugins-github/nerdtree"]
-        path = plugins-github/nerdtree
+	path = plugins-github/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "plugins-github/tabular"]
-        path = plugins-github/tabular
+	path = plugins-github/tabular
 	url = https://github.com/godlygeek/tabular.git
 [submodule "plugins-github/tagbar"]
-        path = plugins-github/tagbar
-	url = https://github.com/majutsushi/tagbar
+	path = plugins-github/tagbar
+	url = https://github.com/majutsushi/tagbar.git
